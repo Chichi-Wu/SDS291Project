@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="ipums-ddi-xslt.xsl"?>
-<codeBook xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ddi:codebook:2_5 http://www.ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd" version="2.5" ID="ddi2-159000_cps_00001.dat-cps.ipums.org">
+<codeBook xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ddi:codebook:2_5 http://www.ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd" version="2.5" ID="ddi2-159011_cps_00001.dat-cps.ipums.org">
   <docDscr>
     <citation>
       <titlStmt>
         <titl>Codebook for an IPUMS-CPS Data Extract</titl>
         <subTitl>DDI 2.5 metadata describing the extract file  'cps_00001.dat'</subTitl>
-        <IDNo>ddi2-159000_cps_00001.dat-cps.ipums.org</IDNo>
+        <IDNo>ddi2-159011_cps_00001.dat-cps.ipums.org</IDNo>
       </titlStmt>
       <rspStmt>
         <AuthEnty affiliation="University of Minnesota">Minnesota Population Center</AuthEnty>
@@ -47,167 +47,24 @@
     </citation>
     <stdyInfo>
       <subject>
+        <topcClas vocab="IPUMS">Technical Variables -- HOUSEHOLD</topcClas>
         <topcClas vocab="IPUMS">Linking Variables -- PERSON</topcClas>
         <topcClas vocab="IPUMS">Demographics Variables -- PERSON</topcClas>
-        <topcClas vocab="IPUMS">Income Variables -- PERSON</topcClas>
-        <topcClas vocab="IPUMS">Poverty Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Work Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Outgoing Rotation Groups (Earner Study) Variables -- PERSON</topcClas>
         <topcClas vocab="IPUMS">Voter Supplement Variables -- PERSON</topcClas>
       </subject>
-      <sumDscr ID="sdatref-2713">
-        <timePrd event="single" date="2012-01">2012-01</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2714">
-        <timePrd event="single" date="2012-02">2012-02</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2640">
-        <timePrd event="single" date="2012-03">2012-03</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2715">
-        <timePrd event="single" date="2012-03">2012-03</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2716">
-        <timePrd event="single" date="2012-04">2012-04</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2717">
-        <timePrd event="single" date="2012-05">2012-05</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2718">
-        <timePrd event="single" date="2012-06">2012-06</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2913">
-        <timePrd event="single" date="2012-07">2012-07</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2720">
-        <timePrd event="single" date="2012-08">2012-08</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2721">
-        <timePrd event="single" date="2012-09">2012-09</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2722">
-        <timePrd event="single" date="2012-10">2012-10</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2723">
-        <timePrd event="single" date="2012-11">2012-11</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2724">
-        <timePrd event="single" date="2012-12">2012-12</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2914">
-        <timePrd event="single" date="2016-01">2016-01</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2915">
-        <timePrd event="single" date="2016-02">2016-02</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
       <sumDscr ID="sdatref-2912">
         <timePrd event="single" date="2016-03">2016-03</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2916">
-        <timePrd event="single" date="2016-03">2016-03</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2917">
-        <timePrd event="single" date="2016-04">2016-04</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2918">
-        <timePrd event="single" date="2016-05">2016-05</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2919">
-        <timePrd event="single" date="2016-06">2016-06</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2920">
-        <timePrd event="single" date="2016-07">2016-07</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2921">
-        <timePrd event="single" date="2016-08">2016-08</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2922">
-        <timePrd event="single" date="2016-09">2016-09</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <sumDscr ID="sdatref-2923">
-        <timePrd event="single" date="2016-10">2016-10</timePrd>
         <nation abbr="us">United States</nation>
       </sumDscr>
       <sumDscr ID="sdatref-2924">
         <timePrd event="single" date="2016-11">2016-11</timePrd>
         <nation abbr="us">United States</nation>
       </sumDscr>
-      <sumDscr ID="sdatref-2925">
-        <timePrd event="single" date="2016-12">2016-12</timePrd>
-        <nation abbr="us">United States</nation>
-      </sumDscr>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, January 2012; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, February 2012; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, ASEC 2012; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, March 2012; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, April 2012; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, May 2012; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, June 2012; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, July 2012; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, August 2012; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, September 2012; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, October 2012; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, November 2012; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, December 2012; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, January 2016; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, February 2016; regular size
-]]></notes>
       <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, ASEC 2016; regular size
 ]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, March 2016; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, April 2016; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, May 2016; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, June 2016; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, July 2016; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, August 2016; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, September 2016; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, October 2016; regular size
-]]></notes>
       <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, November 2016; regular size
-]]></notes>
-      <notes><![CDATA[Additional notes on a sample that is part of this study:  IPUMS-CPS, December 2016; regular size
 ]]></notes>
     </stdyInfo>
     <dataAccs>
@@ -231,7 +88,7 @@ The licensing agreement for use of IPUMS-CPS data requires that users supply us 
         <disclaimer>The user of the data acknowledges that the original collector of the data, the authorized distributor of the data, and the relevant funding agency bear no responsibility for use of the data or for interpretations or inferences based upon such uses.</disclaimer>
       </useStmt>
     </dataAccs>
-    <notes><![CDATA[User-provided description:  age, race, sex, income, voting]]></notes>
+    <notes><![CDATA[User-provided description:  SociallyDistantStatisticians Round 2 extract]]></notes>
   </stdyDscr>
   <fileDscr ID="ExtractData">
     <fileTxt>
@@ -245,8 +102,17 @@ The licensing agreement for use of IPUMS-CPS data requires that users supply us 
     </fileTxt>
   </fileDscr>
   <dataDscr>
+    <var ID="YEAR" files="ExtractData" name="YEAR" intrvl="contin" dcml="0">
+      <location StartPos="1" width="4" EndPos="4"/>
+      <labl>Survey year</labl>
+      <txt><![CDATA[YEAR reports the year in which the survey was conducted.  YEARP is repeated on person records.]]></txt>
+      <codInstr><![CDATA[
+YEAR is a 4-digit numeric value.]]></codInstr>
+      <concept vocab="IPUMS">Technical Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
     <var ID="CPSIDP" files="ExtractData" name="CPSIDP" intrvl="contin" dcml="0">
-      <location StartPos="1" width="14" EndPos="14"/>
+      <location StartPos="5" width="14" EndPos="18"/>
       <labl>CPSID, person record</labl>
       <txt><![CDATA[CPSIDP is an IPUMS-CPS defined variable that uniquely identifies individuals across CPS samples. The first six digits of CPSIDP index the four-digit year and two-digit month that the household was first in the CPS. CPSIDP allows users to link a respondent appearing with a designated household roster line number (LINENO) across samples, based on the 4-8-4 rotation pattern, by assigning a unique CPSIDP value to this line number. CPSIDP will only ever appear for a maximum of 8 times, which is the number of times a household may be observed in the CPS survey (as indexed by MISH). In some cases, individuals will appear fewer than 8 times due to migration, mortality, non-response, and recording errors. Extensive documentation about the creation of CPSIDP is available elsewhere [URL omitted from DDI.].
 
@@ -263,7 +129,7 @@ CPSIDP is a 14-digit numeric variable.]]></codInstr>
       <varFormat schema="other" type="numeric"/>
     </var>
     <var ID="AGE" files="ExtractData" name="AGE" intrvl="discrete" dcml="0">
-      <location StartPos="15" width="2" EndPos="16"/>
+      <location StartPos="19" width="2" EndPos="20"/>
       <labl>Age</labl>
       <txt><![CDATA[Age gives each person's age at last birthday.]]></txt>
       <catgry>
@@ -670,7 +536,7 @@ CPSIDP is a 14-digit numeric variable.]]></codInstr>
       <varFormat schema="other" type="numeric"/>
     </var>
     <var ID="SEX" files="ExtractData" name="SEX" intrvl="discrete" dcml="0">
-      <location StartPos="17" width="1" EndPos="17"/>
+      <location StartPos="21" width="1" EndPos="21"/>
       <labl>Sex</labl>
       <txt><![CDATA[SEX gives each person's sex.]]></txt>
       <catgry>
@@ -689,7 +555,7 @@ CPSIDP is a 14-digit numeric variable.]]></codInstr>
       <varFormat schema="other" type="numeric"/>
     </var>
     <var ID="RACE" files="ExtractData" name="RACE" intrvl="discrete" dcml="0">
-      <location StartPos="18" width="3" EndPos="20"/>
+      <location StartPos="22" width="3" EndPos="24"/>
       <labl>Race</labl>
       <txt><![CDATA[Racial categories in the CPS have been more consistent than racial categories in the census.  Up through 2002, the number of race categories ranged from 3 (white, negro, and other) to 5 (white, black, American Indian/Eskimo/Aleut, Asian or Pacific Islander, and other).   Beginning in 2003, respondents could report more than one race, and the number of codes rose to 21, and then up to 26 codes in 2013.]]></txt>
       <catgry>
@@ -811,41 +677,111 @@ CPSIDP is a 14-digit numeric variable.]]></codInstr>
       <concept vocab="IPUMS">Demographics Variables -- PERSON</concept>
       <varFormat schema="other" type="numeric"/>
     </var>
-    <var ID="INCWAGE" files="ExtractData" name="INCWAGE" intrvl="contin" dcml="0">
-      <location StartPos="21" width="8" EndPos="28"/>
-      <labl>Wage and salary income</labl>
-      <txt><![CDATA[INCWAGE indicates each respondent's total pre-tax wage and salary income--that is, money received as an employee--for the previous calendar year.  Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors. 
+    <var ID="CLASSWKR" files="ExtractData" name="CLASSWKR" intrvl="discrete" dcml="0">
+      <location StartPos="25" width="2" EndPos="26"/>
+      <labl>Class of worker</labl>
+      <txt><![CDATA[CLASSWKR indicates whether a respondent was self-employed, was an employee in private industry or the public sector, was in the armed forces, or worked without pay in a family business or farm.  Workers with multiple sources of employment were classified according to the job in which they worked the most hours.  For persons employed at the time of the survey, CLASSWKR relates to the respondent's job during the previous week.  Respondents who were not employed during the previous week reported the most recent job.  The CLASSWLY variable deals with the longest job held during the previous calendar year. 
 
-For ASEC samples 1988-onward, INCWAGE is derived from a Census recode variable.  The topcoded components of INCWAGE are OINCWAGE and INCLONGJ.  OINCWAGE  is always a component of INCWAGE.  When SRCEARN indicates that INCLONGJ is earned from wage and salary, INCLONGJ is an additional component of INCWAGE.]]></txt>
-      <codInstr><![CDATA[
-99999999 = N.I.U. (Not in Universe)
-99999998 = Missing (1962-1964 only)
-
-The Census Bureau applies different disclosure avoidance measures across time for individuals with high income in this variable. Detailed explanations of these methods, topcodes, and replacement value and swap value thresholds are available here [URL omitted from DDI.].]]></codInstr>
-      <concept vocab="IPUMS">Income Variables -- PERSON</concept>
-      <varFormat schema="other" type="numeric"/>
-    </var>
-    <var ID="OFFPOV" files="ExtractData" name="OFFPOV" intrvl="discrete" dcml="0">
-      <location StartPos="29" width="2" EndPos="30"/>
-      <labl>Official Poverty Status (IPUMS constructed)</labl>
-      <txt><![CDATA[OFFPOV is the official poverty classification used for replicating official poverty rates. OFFPOV differs from POVERTY in that it corrects for errors in the POVERTY variable. The main difference between OFFPOV and POVERTY is that OFFPOV only assigns a poverty classification to those persons in the poverty universe. Other differences are explained in the "Differences between OFFPOV and POVERTY" section of the Replicating Official Poverty [URL omitted from DDI.] note.]]></txt>
+In the original CPS public use data, members of the armed forces are coded as N.I.U. (Not in Universe), because they are not part of the civilian labor force.]]></txt>
       <catgry>
-        <catValu>99</catValu>
+        <catValu>00</catValu>
         <labl>NIU</labl>
       </catgry>
       <catgry>
-        <catValu>02</catValu>
-        <labl>Above Poverty Line</labl>
+        <catValu>10</catValu>
+        <labl>Self-employed</labl>
       </catgry>
       <catgry>
-        <catValu>01</catValu>
-        <labl>Below Poverty Line</labl>
+        <catValu>13</catValu>
+        <labl>Self-employed, not incorporated</labl>
       </catgry>
-      <concept vocab="IPUMS">Poverty Variables -- PERSON</concept>
+      <catgry>
+        <catValu>14</catValu>
+        <labl>Self-employed, incorporated</labl>
+      </catgry>
+      <catgry>
+        <catValu>20</catValu>
+        <labl>Works for wages or salary</labl>
+      </catgry>
+      <catgry>
+        <catValu>21</catValu>
+        <labl>Wage/salary, private</labl>
+      </catgry>
+      <catgry>
+        <catValu>22</catValu>
+        <labl>Private, for profit</labl>
+      </catgry>
+      <catgry>
+        <catValu>23</catValu>
+        <labl>Private, nonprofit</labl>
+      </catgry>
+      <catgry>
+        <catValu>24</catValu>
+        <labl>Wage/salary, government</labl>
+      </catgry>
+      <catgry>
+        <catValu>25</catValu>
+        <labl>Federal government employee</labl>
+      </catgry>
+      <catgry>
+        <catValu>26</catValu>
+        <labl>Armed forces</labl>
+      </catgry>
+      <catgry>
+        <catValu>27</catValu>
+        <labl>State government employee</labl>
+      </catgry>
+      <catgry>
+        <catValu>28</catValu>
+        <labl>Local government employee</labl>
+      </catgry>
+      <catgry>
+        <catValu>29</catValu>
+        <labl>Unpaid family worker</labl>
+      </catgry>
+      <catgry>
+        <catValu>99</catValu>
+        <labl>Missing/Unknown</labl>
+      </catgry>
+      <concept vocab="IPUMS">Work Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="HOURWAGE" files="ExtractData" name="HOURWAGE" intrvl="contin" dcml="2">
+      <location StartPos="27" width="5" EndPos="31"/>
+      <labl>Hourly wage</labl>
+      <txt><![CDATA[HOURWAGE reports how much the respondent earned per hour in the current job, for those workers paid an hourly wage (and coded as "2" in PAIDHOUR).  Amounts are expressed as they were reported to the interviewer; users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors.  Researchers should use the EARNWT weight with this variable.
+
+Users should note that HOURWAGE originally had two implied decimal places, but was revised so that the command files provided by IPUMS divide HOURWAGE by 100.
+
+HOURWAGE is one of the Outgoing Rotation/Earner Study [URL omitted from DDI.] questions.]]></txt>
+      <codInstr><![CDATA[
+999.99 = N.I.U. (Not in Universe).
+
+This variable is topcoded. More information on hourly wage topcoding can be found here [URL omitted from DDI.].]]></codInstr>
+      <concept vocab="IPUMS">Outgoing Rotation Groups (Earner Study) Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="EARNWEEK" files="ExtractData" name="EARNWEEK" intrvl="contin" dcml="2">
+      <location StartPos="32" width="8" EndPos="39"/>
+      <labl>Weekly earnings</labl>
+      <txt><![CDATA[EARNWEEK reports how much the respondent usually earned per week at their current job, before deductions. Interviewers asked directly about total weekly earnings and also collected information about the usual number of hours worked per week and the hourly rate of pay at the current job. The figure given in EARNWEEK is the higher of the values derived from these two sources: 1) the respondent's answer to the question, "How much do you usually earn per week at this job before deductions?" or 2) for workers paid by the hour (and coded as "2" in PAIDHOUR), the reported number of hours the respondent usually worked at the job, multiplied by the hourly wage rate given in HOURWAGE.
+
+Amounts are expressed as they were reported to the interviewer, users must adjust for inflation using Consumer Price Index [URL omitted from DDI.] adjustment factors. Researchers should use the EARNWT weight with this variable.
+
+EARNWEEK is one of the Outgoing Rotation/Earner Study [URL omitted from DDI.] questions.]]></txt>
+      <codInstr><![CDATA[
+9999.99 = N.I.U.
+
+
+		
+1982-1988: 999 (Weekly earnings of $999 or more).
+1989-1997: 1923 (Weekly earnings of $1923 or more).
+1998-onward: 2885 (Weekly earnings of $2885 or more: ASEC samples only). 2884.61 for non-ASEC samples.]]></codInstr>
+      <concept vocab="IPUMS">Outgoing Rotation Groups (Earner Study) Variables -- PERSON</concept>
       <varFormat schema="other" type="numeric"/>
     </var>
     <var ID="VOTED" files="ExtractData" name="VOTED" intrvl="discrete" dcml="0">
-      <location StartPos="31" width="2" EndPos="32"/>
+      <location StartPos="40" width="2" EndPos="41"/>
       <labl>Voted for the most recent November election</labl>
       <txt><![CDATA[VOTED identifies whether the person voted during the most recent November election. 
 
@@ -878,7 +814,7 @@ This variable is part of the Voter Supplement [URL omitted from DDI.].]]></txt>
       <varFormat schema="other" type="numeric"/>
     </var>
     <var ID="VOREG" files="ExtractData" name="VOREG" intrvl="discrete" dcml="0">
-      <location StartPos="33" width="2" EndPos="34"/>
+      <location StartPos="42" width="2" EndPos="43"/>
       <labl>Registered for the most recent November election</labl>
       <txt><![CDATA[VOREG identifies whether the person registered to vote for the most recent November election. 
 

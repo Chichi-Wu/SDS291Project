@@ -11,8 +11,12 @@ library(tidyverse)
 library(ipumsr)
 
 if (!require("ipumsr")) stop("Reading IPUMS data into R requires the ipumsr package. It can be installed using the following command: install.packages('ipumsr')")
+
 ddi <- read_ipums_ddi("cps_00001.xml")
 data <- read_ipums_micro(ddi) %>% 
-  filter(!is.na(VOTED))
+  filter(!is.na(VOTED),
+         VOTED  %in% c(1,2),
+         HOURWAGE != 999.99
+         )
 ```
 
