@@ -18,5 +18,12 @@ data <- read_ipums_micro(ddi) %>%
          VOTED  %in% c(1,2),
          HOURWAGE != 999.99
          )
+
+data <- data %>% 
+  filter( RACE == 100 | RACE == 200 )
+
 ```
+
+
+
 
