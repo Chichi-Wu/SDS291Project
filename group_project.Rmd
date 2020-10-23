@@ -21,7 +21,6 @@ data <- read_ipums_micro(ddi) %>%
 
 data <- data %>% 
   filter( RACE == 100 | RACE == 200 )
-
 ```
 
 
