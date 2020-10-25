@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(ipumsr)
+library(dplyr)
 
 if (!require("ipumsr")) stop("Reading IPUMS data into R requires the ipumsr package. It can be installed using the following command: install.packages('ipumsr')")
 
@@ -23,6 +24,9 @@ data <- data %>%
   filter( RACE == 100 | RACE == 200 )
 ```
 
+```{r}
+
+```
 
 
 
