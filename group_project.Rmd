@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(ipumsr)
+library(moderndive)
 library(dplyr)
 
 if (!require("ipumsr")) stop("Reading IPUMS data into R requires the ipumsr package. It can be installed using the following command: install.packages('ipumsr')")
@@ -24,9 +25,180 @@ data <- data %>%
   filter( RACE == 100 | RACE == 200 )
 ```
 
+### Group Name and Members 
+
+Chichi Wu
+Aushanae Haller
+Adriana Beltran Andrade
+
+# Voter Participation Among Wage/Salary Workers
+
+## Purpose and Hypothesis
+
+With the presidential election at the forefront of our country, it seems appropriate to look into voter turnout and the factors that affect it. In news coverage, much attention has been paid to demographics based on race, gender, and age group. Income group, specifically based on hourly wage, however, is an overlooked factor. Thus, is there actually a statistically significant relationship between hourly wage and voter participation?
+This project focuses on the self-reported voting outcomes of wage/salary workers and will test that association in a large, nationally-representative sample. Additionally, in noting the wage gaps that exist for minorities, this project will also explore the relationship between how this wage gap is reflected in voting outcomes. 
+The primary hypothesis is that among wage/salary workers with low hourly earnings, voter participation outcomes are lower than those with high hourly earnings. 
+The secondary hypotheses are:
+
+ The wage gap between White and Black workers will be reflected in voter participation. 
+ The wage gap between men and women workers will be reflected in voter participation.
+ 
+## Data 
+This study will use data from IPUMS-CPS. The Current Population Survey (CPS) harmonizes microdata of monthly labor-force surveys from 1962 to the present. The data includes demographic information, employment data, program participation, and supplemental data, such as voter registration, tobacco and alcohol use, fertility, etc. 
+
+## Population
+CPS includes individual survey respondents, therefore each observation is a different person which is the variable CPSIDP. The CPS also collects their data from the monthly U.S. Labor Force which is a national surve, and we can assume that the observations are independent. 
+Wage/salary workers refer to traditional workers making an hourly wage or annual salary, and excludes self employed workers (e.g., private consultants, farm works, Uber drivers).
+We decided we were only interested in observations in which the person responded to our response variable VOTED with either 01=Did Not Vote or 02=Voted because the other responses did not add any value to our question. As a note, VOTED only contains data for presidential election years and for the month of November. 
+We are also interested in observations where people responded to the explanatory variable RACE with either 100=White or 200=Black to simplify our model.
+We are also interested in observations where people responded to the explanatory variable SEX with either 1= Male or 2=Female to simplify our model.
+ 
+## Response variable
+
+Our response variable named, VOTED from IPUMS-CPS, is a variable stating the status of their vote for the 2016 election. 
+The response options are: 01=Did Not Vote, 02=Voted, 96=Refused, 97=Don’t know, 98=No response, 99=Not in the Universe. For our project we wanted all our observations in our dataset to either respond to VOTED with a 01 or 02 to simplify our model. 
+We will use logistic regression to model this outcome.
+
+## Explanatory variables
+
+### Primary Hypothesis
+As stated above, we will restrict this analysis to those who responded with either 01= Did Not Vote or 02 = Voted (using VOTED variable from IPUMS-CPS).
+
+The test of our hypothesis will be 
+
+$H_0: \beta_1 = 0$,
+
+Where there is no relationship between hourly earnings and voter participation outcomes.
+
+$H_A: \beta_1 \neq  0$,
+
+Where there is a relationship between hourly earnings and voter participation outcomes.
+
+From the regression model:
+
+$logit(Voter Participation) = \beta_0 + \beta_1(hourwage) + \beta'X$
+
+Where $\beta'X$ is a vector of covariates included to control for potential confounding. They are described below.
+
+### Secondary Hypothesis 
+The wage gap between White and Black workers will be reflected in voter participation. 
+
+Also stated above, we will restrict this analysis to those who responded with either 100=White or 200=Black (using RACE variable from IPUMS-CPS) and 01= Did Not Vote or 02 = Voted (using VOTED variable from IPUMS-CPS).
+
+We will test this hypothesis with an interaction between hourly wage and race.
+
+The test of our hypothesis will be 
+
+$H_0: \beta_3 =  0$,
+
+Where the wage gap in terms of race shows no relationship between voter participation outcomes.
+
+$H_A: \beta_3 \neq  0$,
+
+Where the wage gap in terms of race shows a relationship between voter participation outcomes.
+
+From the regression model:
+
+$logit(Voter Participation) = \beta_0 + \beta_1(hourwage) + \beta_2(Race) + \beta_3(hourwage* Race) + \beta'X$
+
+Where 'Xis a vector of covariates included to control for potential confounding. 
+
+The wage gap between Men and Women workers will be reflected in voter participation. 
+
+We will test this hypothesis with an interaction between hourly wage and sex.
+
+The test of our hypothesis will be 
+
+$H_0: \beta_3 =  0$,
+
+Where the wage gap in terms of sex shows no relationship between voter participation outcomes.
+
+$H_A: \beta_3 \neq  0$,
+
+Where the wage gap in terms of sex shows a relationship between voter participation outcomes.
+
+From the regression model:
+
+$logit(Voter Participation) = \beta_0 + \beta_1(hourwage) + \beta_2(Sex) + \beta_3(hourwage* Sex) + \beta'X$
+
+Where 'Xis a vector of covariates included to control for potential confounding. 
+
+## Potential Cofounders
+We’ve talked about the potential cofounders in the section above. 
+Age : AGE
+Sex : SEX
+
+
+
+## Exploratory Visualizations
+
+### Response Variable
+
 ```{r}
+# making it a factor
+data$VOTED <- factor(data$VOTED,
+labels = c("1", "2")
+)
+## vusualization to see proportion in our response variable
+ggplot(data, aes(x= VOTED, fill = VOTED))+
+  geom_bar(position = "stack")+
+  labs(title= "Proportion of People Who Did Not Vote People Who Did Vote", x= "Did Not Vote (1) and Did Vote (2)", y= "People")
+```
+
+### Explanatory Variable: HOURWAGE
+
+```{r}
+# histogram with distributions of hourly wages
+ggplot(data, aes(x = HOURWAGE))+
+  geom_histogram(bins = 40)
+```
+
+
+### Primary Hypothesis: HourWage , Voted
+
+```{r}
+# making it a factor
+data$VOTED <- factor(data$VOTED,
+labels = c("1", "2")
+)
+# creating a box plot to see relationship between hour wage and voted
+ggplot( data, aes(y = HOURWAGE, x = VOTED ))+
+  geom_boxplot()+
+  labs("Boxplot of Relationship Between Voting Habit and Hourly Wage")
 
 ```
+
+```{r include = FALSE}
+# fitting simple linear model 
+Voted_wage_Smodel <- lm(HOURWAGE ~ VOTED ,data)
+# r^2 
+get_regression_summaries(Voted_wage_Smodel)
+# slopes and intercepts
+get_regression_table(Voted_wage_Smodel)
+```
+
+### Explanatory Variable: RACE and SEX
+
+```{r}
+
+
+dataMutated <- data %>% 
+  mutate(wageBin = cut(HOURWAGE,c(7, 15, 25, 50,75,100))) %>% 
+  group_by(RACE, wageBin) %>% 
+  summarize( people = n())
+
+# this is a horizontal bar plot with two lines 
+ggplot(dataMutated, aes( x = wageBin ,y= people, fill = as.factor(RACE) ))+
+  geom_col(position = "dodge")+
+  labs(title="Proportion by Race for Different Bins of Hourly Wages", x= " Hourly Wage", y = "People")
+
+
+```
+
+
+
+
+
 
 
 
