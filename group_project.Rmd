@@ -121,7 +121,7 @@ From the regression model:
 
 $logit(Voter Participation) = \beta_0 + \beta_1(hourwage) + \beta_2(Sex) + \beta_3(hourwage* Sex) + \beta'X$
 
-Where 'Xis a vector of covariates included to control for potential confounding. 
+Where $'X$ is a vector of covariates included to control for potential confounding. 
 
 ## Potential Cofounders
 We’ve talked about the potential cofounders in the section above. 
@@ -136,18 +136,27 @@ Sex : SEX
 
 ```{r}
 # making it a factor
-data$VOTED <- factor(data$VOTED,
-labels = c("1", "2")
-)
-## vusualization to see proportion in our response variable
-ggplot(data, aes(x= VOTED, fill = VOTED))+
-  geom_bar(position = "stack")+
-  labs(title= "Proportion of People Who Did Not Vote People Who Did Vote", x= "Did Not Vote (1) and Did Vote (2)", y= "People")
+data$VOTED <-factor(data$VOTED, levels = c("1","2"), labels=c("No","Yes"))
+
+## visualization to see proportion in our response variable
+ggplot(data, aes(x=VOTED, fill = VOTED)) +
+  geom_bar() +
+  scale_x_discrete(labels = c("No", "Yes")) +
+  guides(fill=FALSE) +
+  labs(title= "Voting behavior in 2016 election",
+       x = "Voted?",
+       y= "Number of People"
+       )
 ```
 
 ### Explanatory Variable: HOURWAGE
 
 ```{r}
+## Coerce HOURWAGE to numeric
+## This is safe, as all the 999.99 "Not In Universe" values have been removed already
+
+data <- mutate(data, HOURWAGE = as.numeric(HOURWAGE))
+
 # histogram with distributions of hourly wages
 ggplot(data, aes(x = HOURWAGE))+
   geom_histogram(bins = 40)
@@ -157,48 +166,85 @@ ggplot(data, aes(x = HOURWAGE))+
 ### Primary Hypothesis: HourWage , Voted
 
 ```{r}
-# making it a factor
-data$VOTED <- factor(data$VOTED,
-labels = c("1", "2")
-)
 # creating a box plot to see relationship between hour wage and voted
-ggplot( data, aes(y = HOURWAGE, x = VOTED ))+
+ggplot( data, aes(y = HOURWAGE, x = VOTED))+
   geom_boxplot()+
   labs("Boxplot of Relationship Between Voting Habit and Hourly Wage")
-
 ```
 
 ```{r include = FALSE}
 # fitting simple linear model 
-Voted_wage_Smodel <- lm(HOURWAGE ~ VOTED ,data)
+Voted_wage_Smodel <- lm(HOURWAGE ~ VOTED, data)
 # r^2 
 get_regression_summaries(Voted_wage_Smodel)
 # slopes and intercepts
 get_regression_table(Voted_wage_Smodel)
 ```
 
-### Explanatory Variable: RACE and SEX
+### Explanatory Variable: RACE
 
 ```{r}
+data <- mutate(data, RACE = factor(RACE, levels=c("100","200"),
+                                   labels = c("White", "Black")
+                                   )
+               )
 
+ggplot(data, aes(x=HOURWAGE, color=RACE)) +
+  geom_density(adjust = 2)
+```
 
+This density plot shows that White works are are less likely than Black workers to earn between 0 and approximately 15 dollars an hour, but more likely than Black workers to earn more than approximately 15 dollars an hour. This shows evidence for a wage gap between races in our sample of data.
+
+```{r}
 dataMutated <- data %>% 
-  mutate(wageBin = cut(HOURWAGE,c(7, 15, 25, 50,75,100))) %>% 
+  mutate(wageBin = cut(HOURWAGE, c(0, 7.25, 15, 25, 50, 75, 100))) %>% 
   group_by(RACE, wageBin) %>% 
-  summarize( people = n())
+  summarize( people = n()) %>%
+  group_by(RACE) %>%
+  mutate(proportion = people/sum(people))
 
 # this is a horizontal bar plot with two lines 
-ggplot(dataMutated, aes( x = wageBin ,y= people, fill = as.factor(RACE) ))+
+ggplot(dataMutated, aes( x = wageBin, y= proportion, fill = RACE))+
   geom_col(position = "dodge")+
   labs(title="Proportion by Race for Different Bins of Hourly Wages", x= " Hourly Wage", y = "People")
-
 
 ```
 
 
+The plot above supports a similar conclusion (a wage gap between races) but shows a proportional breakdown across different hourly earning intervals. The proportion of Black workers earning between 0 and 7.25 (the federal minimum wage) and between 7.25 and 15 dollars an hour is higher than the proportion of White workers in those same intervals. Conversely, the proportion of White workers in every earning bracket above 15 dollars an hour is higher than the proportion of Black workers in the same earnings interval.
 
 
+```{r}
+p_vote_given_race <- group_by(data, RACE, VOTED) %>%
+  summarise(people = n()) %>%
+  group_by(RACE) %>%
+  mutate(proportion = people/sum(people))
 
+ggplot(p_vote_given_race, aes(x=VOTED, y=proportion, fill=RACE)) +
+  geom_col(position = "dodge") +
+  scale_x_discrete("Voted?") +
+  ggtitle("Proportion of people voting by race")
+```
 
+## Modeling
 
+```{r echo=FALSE}
+data <- mutate(data, VOTED = as.numeric(VOTED)-1)
+model1 <- glm(VOTED ~ HOURWAGE * RACE, data=data, family = binomial)
+```
+
+```{r echo=FALSE, fig.align="center"}
+ggplot(data=data, aes(x=HOURWAGE, y=VOTED, color=RACE)) +
+  geom_point(position = position_jitter(height=.01)) +
+  geom_smooth(method = glm,
+              method.args=list(family=binomial),
+              fullrange=TRUE,
+              formula=y~x
+              )
+```
+
+```{r}
+summary(model1)$coefficients %>%
+  knitr::kable(digits=3)
+```
 
