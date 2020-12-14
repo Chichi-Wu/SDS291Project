@@ -18,11 +18,72 @@ ddi <- read_ipums_ddi("cps_00001.xml")
 data <- read_ipums_micro(ddi) %>% 
   filter(!is.na(VOTED),
          VOTED  %in% c(1,2),
-         HOURWAGE != 999.99
-         )
+         HOURWAGE != 999.99,
+         HOURWAGE < 75
+         ) %>% 
+  mutate(Voted_binary = ifelse(VOTED == 1, 0, 1))
 
 data <- data %>% 
   filter( RACE == 100 | RACE == 200 )
+
+data050 <- data %>% 
+  filter(HOURWAGE <=50)
+
+data50100 <- data %>% 
+  filter(HOURWAGE > 50)
+
+data15 <- data %>% 
+  filter(HOURWAGE > 15)
+
+lookup1 <- data050 %>% 
+  group_by(RACE) %>% 
+  summarize(count = n())
+lookup1
+
+lookup2 <- data50100 %>% 
+  group_by(RACE) %>% 
+  summarize(count = n())
+lookup2
+
+lookup3 <- data %>% 
+  summarize(median = median(HOURWAGE))
+
+lookup3
+
+lookup4 <- data %>% 
+  group_by(RACE) %>% 
+  summarize(median = median(HOURWAGE))
+
+lookup4
+
+lookup5 <- data %>% 
+  group_by(RACE) %>% 
+  summarize(mean = mean(HOURWAGE))
+
+lookup5
+
+lookup6 <- data %>% 
+  group_by(RACE) %>% 
+  summarize(mean = mean(HOURWAGE),
+            meanVote = mean(VOTED),
+            median = median(HOURWAGE),
+            medianVote = median(VOTED),
+            quartilesVOTE = IQR(VOTED),
+            quartiles = IQR(HOURWAGE),
+            count = n()
+            )
+lookup6
+
+
+lookup7 <- data %>% 
+  group_by(RACE, VOTED) %>% 
+  summarize(count = n()
+            )
+lookup7
+
+1642/(3468+1642)
+
+201/(583+201)
 ```
 
 ## Group Name and Members 
@@ -65,10 +126,10 @@ We will use logistic regression to model this outcome.
 
 ### Explanatory variables
 
-Primary Hypothesis
+## Primary Hypothesis
 As stated above, we will restrict this analysis to those who responded with either 01= Did Not Vote or 02 = Voted (using VOTED variable from IPUMS-CPS).
 
-The test of our hypothesis will be 
+The test of our hypothesis will be: 
 
 $H_0 : \beta_1 = 0$
 
@@ -84,6 +145,27 @@ $logit(Voter Participation) = \beta_0 + \beta_1* HourlyWage + \beta'X$
 
 Where $\beta'X$ is a vector of covariates included to control for potential confounding. They are described below.
 
+```{r}
+primary_fit <- glm(Voted_binary ~ HOURWAGE, data = data, family = binomial)
+
+primary_fit$coefficients
+
+
+ggplot(data,
+       aes(x=HOURWAGE, y =Voted_binary)
+      )+
+  geom_point(
+    position = position_jitter(height = 0.1)
+  )+
+  geom_smooth(
+    method = glm,
+    method.args = list(family = binomial),
+    se = FALSE,
+    formula = y~x
+  )
+```
+
+
 ### Secondary Hypothesis 
 
 Among Black wage/salary workers with low hourly earnings, voter participation outcomes are lower than that of White wage/salary workers with similar earnings. Nevertheless, as earnings increase, the effects of race on voter participation decrease. 
@@ -93,21 +175,52 @@ Also stated above, we will restrict this analysis to those who responded with ei
 
 We will test this hypothesis with an interaction between hourly wage and race.
 
-The test of our hypothesis will be
+The test of our hypothesis will be:
 
 $H_0 : \beta_3 = 0$
 
-Where the wage gap in terms of race shows no relationship between voter participation outcomes.
+Where the effect of income on voter participation does differ between Black workers and White workers.
 
 $H_A : \beta_3 \neq 0$
 
-Where the wage gap in terms of race shows a relationship between voter participation outcomes.
+Where the effect of income on voter participation does not differ between Black workers and White workers.
 
 From the regression model:
 $logit(Voter Participation) = \beta_0 + \beta_1* HourlyWage + \beta_2* Race + \beta_3* (HourlyWage*Race) + \beta'X$
 
 Where $\beta'X$ is a vector of covariates included to control for potential confounding. 
 
+```{r}
+secondary_fit <- glm(Voted_binary ~ HOURWAGE * RACE, data = data, family = binomial)
+
+secondary_fit$coefficients
+
+data$RACE <- factor(data$RACE,
+labels = c("100","200")
+)
+
+ggplot(data,
+       aes(x=HOURWAGE, y =Voted_binary, color = RACE)
+      )+
+  geom_point(
+    aes(color = factor(RACE)),
+    position = position_jitter(height = 0.2)
+  )+
+  geom_smooth(
+    method = glm,
+    method.args = list(family = binomial),
+    se = FALSE,
+    formula = y~x
+  )+
+  scale_color_discrete("RACE")
+
+
+lookup <- data %>% 
+  group_by(RACE) %>% 
+  summarize(count = n())
+
+lookup
+```
 
 ## Potential Cofounders
 We’ve talked about the potential cofounders in the section above. 
